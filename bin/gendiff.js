@@ -14,4 +14,4 @@ program
     console.log(`result will be here`);
   });
 
-program.parse();
+program.parse(process.argv);
