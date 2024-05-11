@@ -1,6 +1,7 @@
 import { test, expect } from '@jest/globals';
 import { fileURLToPath } from 'url';
 import path from 'path';
+import fs from 'fs';
 import genDiff from '../src/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -16,6 +17,7 @@ const expectedResult = `{
 }`
 
 const getFixturePath = (filepath) => path.join(__dirname, '..', '__fixtures__', filepath);
+// const resultExpected = (fileName) => fs.readFileSync(getFixturePath(fileName), 'utf-8').trim();
 
 test('genDiff test', () => {
   const path1 = getFixturePath(`file1.json`);
