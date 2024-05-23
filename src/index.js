@@ -16,12 +16,8 @@ const parseFile = (filePath) => {
 
 const compareKeys = (obj1, obj2) => _.sortBy(_.union(Object.keys(obj1), Object.keys(obj2)));
 
-const genDiff = (filePath1, filePath2) => {
-  const data1 = parseFile(filePath1);
-  const data2 = parseFile(filePath2);
-  const keys = compareKeys(data1, data2);
-
-  const diff = keys.map((key) => {
+const checkDiff = (data1, data2, keys) => {
+  return keys.map((key) => {
     if (_.has(data1, key) && _.has(data2, key)) {
       if (_.isEqual(data1[key], data2[key])) {
         return `  ${key}: ${data1[key]}`;
@@ -32,6 +28,13 @@ const genDiff = (filePath1, filePath2) => {
     }
     return `+ ${key}: ${data2[key]}`;
   });
+}
+
+const genDiff = (filePath1, filePath2) => {
+  const data1 = parseFile(filePath1);
+  const data2 = parseFile(filePath2);
+  const keys = compareKeys(data1, data2);
+  const diff = checkDiff(data1, data2, keys);
 
   return `{\n  ${diff.join('\n  ')}\n}`;
 };
