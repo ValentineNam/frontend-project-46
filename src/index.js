@@ -1,5 +1,4 @@
 import path from 'path';
-import process from 'process';
 import fs from 'fs';
 import _ from 'lodash';
 
@@ -10,7 +9,6 @@ const parseFile = (filePath) => {
   switch (fileExt) {
     case '.json':
       return JSON.parse(fileContent);
-    // Добавьте поддержку других форматов при необходимости
     default:
       throw new Error(`Формат файла ${fileExt} не поддерживается`);
   }
@@ -36,19 +34,5 @@ const genDiff = (filePath1, filePath2) => {
 
   return `{\n  ${diff.join('\n  ')}\n}`;
 };
-
-// const getFileFormat = (filePath) => {
-//   const extname = path.extname(filePath);
-//   switch (extname) {
-//     case '.json':
-//       return 'JSON';
-//     case '.yml':
-//       return 'YML';
-//     case '.txt':
-//       return 'TXT';
-//     default:
-//       return 'Неизвестный формат';
-//   }
-// }
 
 export default genDiff;
