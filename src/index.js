@@ -14,11 +14,12 @@ const parseFile = (filePath) => {
   }
 };
 
+const compareKeys = (obj1, obj2) => _.sortBy(_.union(Object.keys(obj1), Object.keys(obj2)));
+
 const genDiff = (filePath1, filePath2) => {
   const data1 = parseFile(filePath1);
   const data2 = parseFile(filePath2);
-
-  const keys = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)));
+  const keys = compareKeys(data1, data2);
 
   const diff = keys.map((key) => {
     if (_.has(data1, key) && _.has(data2, key)) {
