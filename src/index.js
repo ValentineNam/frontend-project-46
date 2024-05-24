@@ -1,3 +1,5 @@
+import path from 'path';
+import fs from 'fs';
 import _ from 'lodash';
 import parseFile from './parsers';
 
@@ -17,9 +19,19 @@ const checkDiff = (data1, data2, keys) => {
   });
 }
 
+const extractFileExt = (filePath) => path.extname(filePath);
+
+const extractFileContent = (filePath, format = 'utf8') => fs.readFileSync(filePath, format);
+
 const genDiff = (filePath1, filePath2) => {
-  const data1 = parseFile(filePath1);
-  const data2 = parseFile(filePath2);
+  const file1Ext = extractFileExt(filePath1);
+  const file1Content = extractFileContent(filePath1, 'utf8');
+
+  const file2Ext = extractFileExt(filePath2);
+  const file2Content = extractFileContent(filePath2, 'utf8');
+
+  const data1 = parseFile(file1Content, file1Ext);
+  const data2 = parseFile(file2Content, file2Ext);
   const keys = compareKeys(data1, data2);
   const diff = checkDiff(data1, data2, keys);
 
@@ -27,4 +39,4 @@ const genDiff = (filePath1, filePath2) => {
 };
 
 export default genDiff;
-export { parseFile };
+export { extractFileContent, extractFileExt };

@@ -12,7 +12,6 @@ program
   .argument('<filepath1>', 'first configuration file')
   .argument('<filepath2>', 'second configuration file')
   .action((path1, path2, opts) => {
-    // console.log(`result will be here`);
     console.log(genDiff(path1, path2, opts));
   });
 

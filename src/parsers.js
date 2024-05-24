@@ -1,10 +1,7 @@
-import path from 'path';
-import fs from 'fs';
+// import path from 'path';
+// import fs from 'fs';
 
-const parseFile = (filePath) => {
-  const fileExt = path.extname(filePath);
-  const fileContent = fs.readFileSync(filePath, 'utf8');
-
+const parseFile = (fileContent, fileExt) => {
   switch (fileExt) {
     case '.json':
       return JSON.parse(fileContent);

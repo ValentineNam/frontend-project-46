@@ -1,8 +1,8 @@
 import { test, expect } from '@jest/globals';
 import { fileURLToPath } from 'url';
 import path from 'path';
-import genDiff from '../src/index.js';
-import parseFile from '../src/index.js';
+import genDiff, {extractFileExt, extractFileContent} from '../src/index.js';
+import parseFile from '../src/parsers.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -27,7 +27,9 @@ test('genDiff json test', () => {
 
 test('throws an error for unsupported file format', () => {
   const filePath = getFixturePath('testfile.txt'); // Пример файла с неподдерживаемым расширением
+  const fileExt = extractFileExt(filePath);
+  const fileContent = extractFileContent(filePath, 'utf8');
   expect(() => {
-    parseFile(filePath);
+    parseFile(fileContent, fileExt);
   }).toThrowError(`Формат файла ${path.extname(filePath)} не поддерживается`);
 });
