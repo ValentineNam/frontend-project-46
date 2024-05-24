@@ -1,7 +1,7 @@
 import { test, expect } from '@jest/globals';
 import { fileURLToPath } from 'url';
 import path from 'path';
-import genDiff, {extractFileExt, extractFileContent} from '../src/index.js';
+import genDiff, { extractFileExt, extractFileContent } from '../src/index.js';
 import parseFile from '../src/parsers.js';
 
 const __filename = fileURLToPath(import.meta.url);

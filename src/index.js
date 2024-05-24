@@ -1,23 +1,21 @@
 import path from 'path';
 import fs from 'fs';
 import _ from 'lodash';
-import parseFile from './parsers';
+import parseFile from './parsers.js';
 
 const compareKeys = (obj1, obj2) => _.sortBy(_.union(Object.keys(obj1), Object.keys(obj2)));
 
-const checkDiff = (data1, data2, keys) => {
-  return keys.map((key) => {
-    if (_.has(data1, key) && _.has(data2, key)) {
-      if (_.isEqual(data1[key], data2[key])) {
-        return `  ${key}: ${data1[key]}`;
-      }
-      return `- ${key}: ${data1[key]}\n  + ${key}: ${data2[key]}`;
-    } if (_.has(data1, key)) {
-      return `- ${key}: ${data1[key]}`;
+const checkDiff = (data1, data2, keys) => keys.map((key) => {
+  if (_.has(data1, key) && _.has(data2, key)) {
+    if (_.isEqual(data1[key], data2[key])) {
+      return `  ${key}: ${data1[key]}`;
     }
-    return `+ ${key}: ${data2[key]}`;
-  });
-}
+    return `- ${key}: ${data1[key]}\n  + ${key}: ${data2[key]}`;
+  } if (_.has(data1, key)) {
+    return `- ${key}: ${data1[key]}`;
+  }
+  return `+ ${key}: ${data2[key]}`;
+});
 
 const extractFileExt = (filePath) => path.extname(filePath);
 
