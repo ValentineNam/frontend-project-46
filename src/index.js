@@ -1,18 +1,5 @@
-import path from 'path';
-import fs from 'fs';
 import _ from 'lodash';
-
-const parseFile = (filePath) => {
-  const fileExt = path.extname(filePath);
-  const fileContent = fs.readFileSync(filePath, 'utf8');
-
-  switch (fileExt) {
-    case '.json':
-      return JSON.parse(fileContent);
-    default:
-      throw new Error(`Формат файла ${fileExt} не поддерживается`);
-  }
-};
+import parseFile from './parsers';
 
 const compareKeys = (obj1, obj2) => _.sortBy(_.union(Object.keys(obj1), Object.keys(obj2)));
 
