@@ -25,6 +25,13 @@ test('genDiff json test', () => {
   expect(gendiffResult).toEqual(expectedResult);
 });
 
+test('genDiff yml test', () => {
+  const path1 = getFixturePath('filepath1.yml');
+  const path2 = getFixturePath('filepath2.yml');
+  const gendiffResult = genDiff(path1, path2);
+  expect(gendiffResult).toEqual(expectedResult);
+});
+
 test('throws an error for unsupported file format', () => {
   const filePath = getFixturePath('testfile.txt'); // Пример файла с неподдерживаемым расширением
   const fileExt = extractFileExt(filePath);
