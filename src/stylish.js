@@ -44,4 +44,4 @@ ${currentIndent}+ ${key}: ${stringify(value.newValue, depth + 1)}`,
   return inner(tree);
 };
 
-export { formatDiffOutput };
+export default formatDiffOutput;

@@ -1,13 +1,13 @@
 import _ from 'lodash';
 import parseFile from './parsers.js';
-import { extractFileContent, extractFileExt } from './extract.js'
-import { formatDiffOutput } from './stylish.js';
+import { extractFileContent, extractFileExt } from './extract.js';
+import formatDiffOutput from './stylish.js';
 
 const compareKeys = (obj1, obj2) => _.sortBy(_.union(Object.keys(obj1), Object.keys(obj2)));
 
 const returnkDiffObject = (data1, data2, keys) => {
   const diffObj = {};
-  
+
   keys.forEach((key) => {
     if (!_.has(data1, key)) {
       diffObj[key] = { type: 'added', value: data2[key] };
@@ -23,7 +23,7 @@ const returnkDiffObject = (data1, data2, keys) => {
       }
     }
   });
-  
+
   return diffObj;
 };
 
