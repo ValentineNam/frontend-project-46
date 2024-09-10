@@ -118,6 +118,6 @@ test('throws an error for wrong formatter type', () => {
   const path1 = getFixturePath('filepath1.json');
   const path2 = getFixturePath('filepath2.json');
   expect(() => {
-    gendiffResult = genDiff(path1, path2, formatName);
+    genDiff(path1, path2, formatName); // Убираем gendiffResult
   }).toThrowError(`Unknown format name: ${formatName}`);
 });
