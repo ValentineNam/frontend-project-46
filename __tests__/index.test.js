@@ -17,7 +17,7 @@ const expectedResultFlat = `{
   + verbose: true
 }`;
 
-const expectedResultTree = `{
+const expectedResultStylish = `{
     common: {
       + follow: false
         setting1: Value 1
@@ -62,6 +62,18 @@ const expectedResultTree = `{
     }
 }`;
 
+const expectedResultPlain = `Property 'common.follow' was added with value: false
+Property 'common.setting2' was removed
+Property 'common.setting3' was updated. From true to null
+Property 'common.setting4' was added with value: 'blah blah'
+Property 'common.setting5' was added with value: [complex value]
+Property 'common.setting6.doge.wow' was updated. From '' to 'so much'
+Property 'common.setting6.ops' was added with value: 'vops'
+Property 'group1.baz' was updated. From 'bas' to 'bars'
+Property 'group1.nest' was updated. From [complex value] to 'str'
+Property 'group2' was removed
+Property 'group3' was added with value: [complex value]`;
+
 const getFixturePath = (filepath) => path.join(__dirname, '..', '__fixtures__', filepath);
 
 test('genDiff json test', () => {
@@ -78,11 +90,18 @@ test('genDiff yml test', () => {
   expect(gendiffResult).toEqual(expectedResultFlat);
 });
 
-test('genDiff tree object test', () => {
+test('genDiff stylish test', () => {
   const path1 = getFixturePath('filepath1.json');
   const path2 = getFixturePath('filepath2.json');
   const gendiffResult = genDiff(path1, path2);
-  expect(gendiffResult).toEqual(expectedResultTree);
+  expect(gendiffResult).toEqual(expectedResultStylish);
+});
+
+test('genDiff plain test', () => {
+  const path1 = getFixturePath('filepath1.json');
+  const path2 = getFixturePath('filepath2.json');
+  const gendiffResult = genDiff(path1, path2, 'plain');
+  expect(gendiffResult).toEqual(expectedResultPlain);
 });
 
 test('throws an error for unsupported file format', () => {

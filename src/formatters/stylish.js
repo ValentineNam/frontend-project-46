@@ -16,7 +16,7 @@ const stringify = (data, depth = 1) => {
   return result;
 };
 
-const formatDiffOutput = (tree) => {
+const formatStylishOutput = (tree) => {
   const inner = (currentValue, depth = 1) => {
     const currentIndent = getIdent(depth);
     const bracketIndent = getBrackeIndent(depth);
@@ -44,4 +44,4 @@ ${currentIndent}+ ${key}: ${stringify(value.newValue, depth + 1)}`,
   return inner(tree);
 };
 
-export default formatDiffOutput;
+export default formatStylishOutput;
