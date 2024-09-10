@@ -1,5 +1,10 @@
 import _ from 'lodash';
 
+const extractValue = (value) => {
+  if (typeof value === 'string') return `'${value}'`;
+  return _.isObject(value) ? '[complex value]' : String(value);
+};
+
 const formatPlainOutput = (tree) => {
   const inner = (currentValue, path) => {
     const lines = Object.entries(currentValue).flatMap(([key, value]) => {
@@ -12,7 +17,7 @@ const formatPlainOutput = (tree) => {
         case 'added':
           return `Property '${fullPath}' was added with value: ${extractValue(value.value)}`;
         case 'unchanged':
-          return [];  // Просто пропускаем, не добавляем ничего
+          return []; // Просто пропускаем, не добавляем ничего
         case 'changed':
           return `Property '${fullPath}' was updated. From ${extractValue(value.oldValue)} to ${extractValue(value.newValue)}`;
         default:
@@ -22,11 +27,6 @@ const formatPlainOutput = (tree) => {
     return lines.join('\n');
   };
   return inner(tree, '');
-}
-
-const extractValue = (value) => {
-  if (typeof value === 'string') return `'${value}'`;
-  return _.isObject(value) ? '[complex value]' : String(value);
 };
 
 export default formatPlainOutput;

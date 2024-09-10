@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import parseFile from './parsers.js';
 import { extractFileContent, extractFileExt } from './extract.js';
 import formatStylishOutput from './formatters/stylish.js';
@@ -25,7 +24,7 @@ const genDiff = (filePath1, filePath2, formatName = 'stylish') => {
       return formatPlainOutput(diff);
 
     default:
-      break;
+      throw new Error(`Unknown format name: ${formatName}`); // Обработка неизвестного формата
   }
 };
 
