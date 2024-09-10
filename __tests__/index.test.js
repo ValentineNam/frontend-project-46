@@ -112,3 +112,12 @@ test('throws an error for unsupported file format', () => {
     parseFile(fileContent, fileExt);
   }).toThrowError(`Формат файла ${path.extname(filePath)} не поддерживается`);
 });
+
+test('throws an error for wrong formatter type', () => {
+  const formatName = 'wrong';
+  const path1 = getFixturePath('filepath1.json');
+  const path2 = getFixturePath('filepath2.json');
+  expect(() => {
+    gendiffResult = genDiff(path1, path2, formatName);
+  }).toThrowError(`Unknown format name: ${formatName}`);
+});
