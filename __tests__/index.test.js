@@ -74,9 +74,13 @@ Property 'group1.nest' was updated. From [complex value] to 'str'
 Property 'group2' was removed
 Property 'group3' was added with value: [complex value]`;
 
+const expectedResultJson = '{"follow":{"type":"deleted","value":false},"host":{"type":"unchanged","value":"hexlet.io"},'
++ '"proxy":{"type":"deleted","value":"123.234.53.22"},"timeout":{"type":"changed","oldValue":50,"newValue":20},'
++ '"verbose":{"type":"added","value":true}}';
+
 const getFixturePath = (filepath) => path.join(__dirname, '..', '__fixtures__', filepath);
 
-test('genDiff json test', () => {
+test('genDiff flat test', () => {
   const path1 = getFixturePath('file1.json');
   const path2 = getFixturePath('file2.json');
   const gendiffResult = genDiff(path1, path2);
@@ -102,6 +106,13 @@ test('genDiff plain test', () => {
   const path2 = getFixturePath('filepath2.json');
   const gendiffResult = genDiff(path1, path2, 'plain');
   expect(gendiffResult).toEqual(expectedResultPlain);
+});
+
+test('genDiff json test', () => {
+  const path1 = getFixturePath('file1.json');
+  const path2 = getFixturePath('file2.json');
+  const gendiffResult = genDiff(path1, path2, 'json');
+  expect(gendiffResult).toEqual(expectedResultJson);
 });
 
 test('throws an error for unsupported file format', () => {

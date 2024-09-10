@@ -2,6 +2,7 @@ import parseFile from './parsers.js';
 import { extractFileContent, extractFileExt } from './extract.js';
 import formatStylishOutput from './formatters/stylish.js';
 import formatPlainOutput from './formatters/plain.js';
+import formatJsonOutput from './formatters/json.js';
 import returnDiffObject, { compareKeys } from './makediff.js';
 
 const genDiff = (filePath1, filePath2, formatName = 'stylish') => {
@@ -22,6 +23,9 @@ const genDiff = (filePath1, filePath2, formatName = 'stylish') => {
 
     case 'plain':
       return formatPlainOutput(diff);
+
+    case 'json':
+      return formatJsonOutput(diff);
 
     default:
       throw new Error(`Unknown format name: ${formatName}`); // Обработка неизвестного формата
