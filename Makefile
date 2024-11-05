@@ -13,7 +13,7 @@ lint-fix:
 	npx eslint . --fix
 
 gendiff:
-	node bin/gendiff.js
+	node src/gendiff.js
 
 test:
 	npx jest
