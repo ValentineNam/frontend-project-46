@@ -1,4 +1,4 @@
-# Badges
+## Badges
 #### Hexlet tests and linter status:
 [![Actions Status](https://github.com/ValentineNam/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/ValentineNam/frontend-project-46/actions)
 
@@ -11,7 +11,7 @@
 #### Codeclimate Test Coverage:
 [![Test Coverage](https://api.codeclimate.com/v1/badges/5e6835640b85ed3b0c8d/test_coverage)](https://codeclimate.com/github/ValentineNam/frontend-project-46/test_coverage)
 
-## Difference generator
+# Difference generator
 This program compares two files and generates the difference between them.
 It can accept input files in the following formats: json, yml, yaml.
 Examples of usage are in the [Usage](#usage) section.
