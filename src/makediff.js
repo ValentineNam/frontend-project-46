@@ -1,10 +1,8 @@
 import _ from 'lodash';
 
 export const compareKeys = (obj1, obj2) => _.sortBy(_.union(Object.keys(obj1), Object.keys(obj2)));
-
 const returnDiffObject = (data1, data2, keys) => {
   const diffObj = {};
-
   keys.forEach((key) => {
     if (!_.has(data1, key)) {
       diffObj[key] = { type: 'added', value: data2[key] };
@@ -20,7 +18,6 @@ const returnDiffObject = (data1, data2, keys) => {
       }
     }
   });
-
   return diffObj;
 };
 
