@@ -121,7 +121,7 @@ test('throws an error for unsupported file format', () => {
   const fileContent = extractFileContent(filePath, 'utf8');
   expect(() => {
     parseFile(fileContent, fileExt);
-  }).toThrowError(`Формат файла ${path.extname(filePath)} не поддерживается`);
+  }).toThrow(`Формат файла ${path.extname(filePath)} не поддерживается`);
 });
 
 test('throws an error for wrong formatter type', () => {
@@ -130,5 +130,5 @@ test('throws an error for wrong formatter type', () => {
   const path2 = getFixturePath('filepath2.json');
   expect(() => {
     genDiff(path1, path2, formatName); // Убираем gendiffResult
-  }).toThrowError(`Unknown format name: ${formatName}`);
+  }).toThrow(`Unknown format name: ${formatName}`);
 });
