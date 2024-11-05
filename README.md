@@ -1,26 +1,42 @@
-### Hexlet tests and linter status:
+#### Hexlet tests and linter status:
 [![Actions Status](https://github.com/ValentineNam/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/ValentineNam/frontend-project-46/actions)
 
-### Node CI status:
+#### Node CI status:
 [![Node CI](https://github.com/ValentineNam/frontend-project-46/actions/workflows/node-check.yml/badge.svg)](https://github.com/ValentineNam/frontend-project-46/actions/workflows/node-check.yml)
 
-### Codeclimate status:
+#### Codeclimate status:
 [![Maintainability](https://api.codeclimate.com/v1/badges/5e6835640b85ed3b0c8d/maintainability)](https://codeclimate.com/github/ValentineNam/frontend-project-46/maintainability)
 
-### Codeclimate Test Coverage:
+#### Codeclimate Test Coverage:
 [![Test Coverage](https://api.codeclimate.com/v1/badges/5e6835640b85ed3b0c8d/test_coverage)](https://codeclimate.com/github/ValentineNam/frontend-project-46/test_coverage)
 
-### About project
+### Difference generator
+This program compares two files and generates the difference between them.
+It can accept input files in the following formats: json, yml, yaml.
+Examples of usage are in the [Usage](#usage) section.
 
 #### Setup
 
 ```bash
+git clone https://github.com/ValentineNam/frontend-project-46.git
+cd frontend-project-46
 make install
 ```
 
-### Asciinema
+### Usage {#usage}
+```bash
+gendiff -h
 
-#### Usage
+  Usage: gendiff [options] <filepath1> <filepath2>
+
+  Compares two configuration files and shows a difference.
+
+  Options:
+    -V, --version        output the version number
+    -f, --format [type]  output format
+    -h, --help           output usage information
+```
+
 [![asciicast](https://asciinema.org/a/1uMmqbNIVHze4dj7UDEUctt67.svg)](https://asciinema.org/a/1uMmqbNIVHze4dj7UDEUctt67)
 
 #### Stylish formatter
