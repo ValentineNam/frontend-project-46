@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "0.1.1",
   "description": "[![Actions Status](https://github.com/ValentineNam/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/ValentineNam/frontend-project-46/actions)",
-  "main": "bin/gendiff.js",
+  "main": "src/index.js",
   "type": "module",
   "scripts": {
     "test": "testing"
